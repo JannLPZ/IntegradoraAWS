@@ -6,7 +6,7 @@ def confirmacion_compra(app, mail,usuario,libro):
     try:
         message=Message('Confirmacion de compra de libro', 
                         sender=current_app.config['MAIL_USERNAME'],
-                        recipients=['20213tn147@utez.edu.mx'])
+                        recipients=['20213tn113@utez.edu.mx'])
         message.html=render_template('emails/confirmacion_compra.html', usuario=usuario, libro=libro)
         thread=Thread(target=envio_email_async,args=[app,mail,message])
         thread.start()
