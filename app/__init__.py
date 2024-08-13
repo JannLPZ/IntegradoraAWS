@@ -121,9 +121,11 @@ def registro():
         nombre_usuario = request.form['nombre_usuario']
         contrasena = request.form['contrasena']
         correo = request.form['correo']
+        domicilio = request.form['direccion']
+        telefono = request.form['telefono']
         contrasena_encriptada = Usuario.generar_encriptacion(contrasena)
         try:
-            nuevo_usuario_id = ModeloUsuario.insertar_usuario(db, nombre_usuario, contrasena_encriptada)
+            nuevo_usuario_id = ModeloUsuario.insertar_usuario(db, nombre_usuario, contrasena_encriptada,domicilio,correo,telefono)
             enviar_correo_registro_administrador(app,mail, nombre_usuario, correo)
             return redirect(url_for('login'))
         except Exception as ex:

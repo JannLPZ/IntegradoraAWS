@@ -42,11 +42,17 @@ class ModeloUsuario():
             raise Exception(ex)
         
     @classmethod
-    def insertar_usuario(self, db, nombre_usuario, contrasena):
+    def insertar_usuario(self, db, nombre_usuario, contrasena,domicilio,correo,telefono):
         try:
             cursor = db.connection.cursor()
-            sql = """INSERT INTO usuario (id, usuario, password, tipousuario_id) 
-            VALUES (NULL, '{0}', '{1}', 2)""".format(nombre_usuario, contrasena)
+            
+            sql = """ INSERT INTO usuario (id, usuario, password, nombre, 
+                        domicilio, correo, telefono, tipousuario_id) 
+                        VALUES (NULL, '{0}', '{1}', '{2}', '{3}', '{4}', {5}, 2);""".format(
+                        nombre_usuario, contrasena, nombre_usuario, domicilio, 
+                        correo, telefono)
+            
+
             cursor.execute(sql)
             db.connection.commit()
         except Exception as ex:
