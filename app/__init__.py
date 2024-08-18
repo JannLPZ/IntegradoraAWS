@@ -17,7 +17,7 @@ from .emails import confirmacion_compra, enviar_correo_registro_administrador
 
 app = Flask(__name__)
 
-csrf=CSRFProtect()
+#csrf=CSRFProtect()
 db=MySQL(app)
 login_manager_app=LoginManager(app)
 mail=Mail()
