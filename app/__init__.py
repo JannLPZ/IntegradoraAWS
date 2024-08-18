@@ -141,7 +141,7 @@ def pagina_no_autorizada(error):
 
 def inicializar_app(config):
     app.config.from_object(config)
-    csrf.init_app(app)
+    #csrf.init_app(app)
     mail.init_app(app)
     app.register_error_handler(401, pagina_no_autorizada)
     app.register_error_handler(404, pagina_no_encontrada)
